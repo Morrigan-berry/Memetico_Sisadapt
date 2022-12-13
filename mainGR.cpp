@@ -111,13 +111,14 @@ int main(int argc, char *argv[])
 		setNewFitness(cruza.at(1),vec1,threshold,solRep2);
 		padres.push_back(padre1);
 		padres.push_back(padre2);
-		nuevos_hijos.push_back(cruza.at(0));
-		nuevos_hijos.push_back(cruza.at(1));
 		local_search(cruza.at(0),vec1,limite);
 		//cout<<"check local search 1"<<endl;
 		local_search(cruza.at(1),vec1,limite);
 		//cout<<"check local search 2"<<endl;
 
+		nuevos_hijos.push_back(cruza.at(0));
+		nuevos_hijos.push_back(cruza.at(1));
+		
 		cruza.clear();
 		//se genera una nueva población y se evalua ()
 		//10 padres x 2 hijos por par de padres =  10 hijos nuevos  + 15 poblacion inicial(incluye padres) = 25 total

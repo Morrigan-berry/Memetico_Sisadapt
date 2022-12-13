@@ -303,7 +303,7 @@ void setNewFitness(cromosoma& crom, vector<vector<char>>& mat ,float threshold, 
     }
     for (int j = 0; j < columnas; j++){
         for (int i = 0; i < filas; i++){
-            if(mat[i][j]!=crom.gen[j]) solRep_aux[i]++;
+            if(mat[i][j] != crom.gen[j]) solRep_aux[i]++;
         }
         
     }
@@ -415,25 +415,26 @@ void local_search(cromosoma &crom,vector<vector<char>> &mat,int limite){
         while(intento != 0){ // dura maximo 3 veces
             //cout<<"entre el loop para probar distintos chars para cambiar intento: "<< intento <<endl;
             char cambio = alfabeto[pos_alf(engine)];
-            int media_principal = 0;
-            int media_siguiente = 0;
+            //int media_principal = 0;
+            //int media_siguiente = 0;
             int fitness_aux = crom.fitness;
             vector <int>numRep_aux = crom.solRep;
             if(cambio == crom.gen[sol_position])cambio = alfabeto[pos_alf(engine)];// evita el mismo char que el escogido original
 		    for (int i = 0; i < filas; i++){
                 //cout<<"numrep en posicion "<<i<<":"<< numRep_aux[i]<<endl;
-                media_siguiente += numRep_aux[i];
-                media_principal += crom.solRep[i];
+                
+                //media_siguiente += numRep_aux[i];
+                //media_principal += crom.solRep[i];
 
                 if(numRep_aux[i] >= limite) continue; // evitar que entre antes de aumentarlo si ya cumple con el fitness
                 
                 if(mat[i][sol_position] != cambio){
                     numRep_aux[i]++;
-                    media_siguiente++;
+                    //media_siguiente++;
                 }
                 if(mat[i][sol_position] == cambio){
                     numRep_aux[i]--;
-                    media_siguiente--;
+                    //media_siguiente--;
                 }
                 
 
@@ -445,11 +446,11 @@ void local_search(cromosoma &crom,vector<vector<char>> &mat,int limite){
                 }
 		    }
 
-            float media1 = static_cast<float>(media_principal)/comp;
-            float media2 = static_cast<float>(media_siguiente)/comp;
+            //float media1 = static_cast<float>(media_principal)/comp;
+            //float media2 = static_cast<float>(media_siguiente)/comp;
 
             //cout<<media_principal<<" "<<media_siguiente<<endl;
-            if(flag == false || media2 > media1){
+            if(flag == false /*|| media2 > media1*/){
                 crom.gen[sol_position] = cambio;
                 crom.fitness = fitness_aux;
                 crom.solRep = numRep_aux;
