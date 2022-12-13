@@ -1,0 +1,9 @@
+1- Generate initial population of size N.  ---------------------->READY
+2-Evaluate each solutions’ fitness/goodness. ---------------------->READY
+3-Select 2 solutions as parents without repetition. ---------------------->READY 
+4-Do Crossover, Mutation and Inversion and create 2 offsprings. ----------------------> CASI READY
+    evaluate the fitness of offspring.
+
+If offspring are better than the worst solutions then replace the worst individuals with the offspring such that population size remains constant.
+Check for convergence criteria.
+If convergence criteria are met, then terminate the program else continue with step 3
